@@ -1,0 +1,12 @@
+# Power BI Data Cache
+**/.pbi/cache.abf
+
+# Power BI Local User Settings
+**/.pbi/localSettings.json
+
+# Ignore binary Power BI files to save space
+*.pbix
+*.pbit
+
+# Ignore temporary lock files
+*.lck
