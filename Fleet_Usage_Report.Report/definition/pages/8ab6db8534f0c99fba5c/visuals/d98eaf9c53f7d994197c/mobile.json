@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.1.0/schema.json",
+  "position": {
+    "x": 33.66668701171875,
+    "y": 77.666656494140625,
+    "z": 2000,
+    "height": 74,
+    "width": 259,
+    "tabOrder": 2000
+  },
+  "objects": {
+    "fillCustom": [],
+    "value": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "16D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ],
+    "layout": [],
+    "cardCalloutArea": [],
+    "image": [],
+    "cardImage": [],
+    "border": [],
+    "outline": [],
+    "accentBar": [],
+    "shadowCustom": [],
+    "divider": [],
+    "label": []
+  },
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "9D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [],
+    "border": [],
+    "dropShadow": [],
+    "divider": [],
+    "spacing": [],
+    "padding": []
+  }
+}

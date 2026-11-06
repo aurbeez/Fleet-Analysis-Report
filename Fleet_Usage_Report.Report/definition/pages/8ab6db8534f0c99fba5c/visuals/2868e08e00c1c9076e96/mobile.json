@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.1.0/schema.json",
+  "position": {
+    "x": 43,
+    "y": 20,
+    "z": 0,
+    "height": 65,
+    "width": 232,
+    "tabOrder": 0
+  },
+  "objects": {
+    "general": [
+      {
+        "properties": {
+          "paragraphs": [
+            {
+              "textRuns": [
+                {
+                  "value": "Overview",
+                  "textStyle": {
+                    "fontWeight": "bold",
+                    "fontFamily": "Arial",
+                    "fontSize": "28pt",
+                    "color": "#6d6363"
+                  }
+                }
+              ],
+              "horizontalTextAlignment": "center"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

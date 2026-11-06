@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "88b53d610c29410046be",
+  "position": {
+    "x": 767.72477452887,
+    "y": 86.808515771094278,
+    "z": 1500,
+    "height": 267.90123456790121,
+    "width": 501.23456790123453,
+    "tabOrder": 8125
+  },
+  "visualGroup": {
+    "displayName": "Fleet Size by Location Visual",
+    "groupMode": "ScaleMode"
+  }
+}

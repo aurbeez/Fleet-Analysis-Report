@@ -1,0 +1,105 @@
+table 'Usage Data'
+	lineageTag: 6a415abc-1e64-4a0c-a723-13e2612a0e82
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: bfd50c2b-68e9-4ab8-bb48-76654684c5c0
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column 'Model Name'
+		dataType: string
+		lineageTag: c3eaf547-c441-4d74-a938-499fb18304d1
+		summarizeBy: none
+		sourceColumn: Model Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Color Usage'
+		dataType: int64
+		formatString: 0
+		lineageTag: 80ea1815-a776-4a0f-b08d-d09a9e045389
+		summarizeBy: sum
+		sourceColumn: Color Usage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mono Usage'
+		dataType: int64
+		formatString: 0
+		lineageTag: fe69f9d7-f7e5-48c9-918d-92f721fd8665
+		summarizeBy: sum
+		sourceColumn: Mono Usage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Copy Usage'
+		dataType: int64
+		lineageTag: 9a6acc20-c725-4446-9a16-2afe5b70a7fd
+		summarizeBy: sum
+		sourceColumn: Copy Usage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Scan Usage'
+		dataType: int64
+		lineageTag: d5a71f40-71c4-4c3f-84ed-b0d50c88d106
+		summarizeBy: sum
+		sourceColumn: Scan Usage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Simplex Usage'
+		dataType: int64
+		lineageTag: 9d1fd74e-21bf-4009-9e74-e68a805b0b8d
+		summarizeBy: sum
+		sourceColumn: Simplex Usage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Duplex Usage'
+		dataType: int64
+		lineageTag: b15c5343-c0de-4ce5-8751-a9ec2231410c
+		summarizeBy: sum
+		sourceColumn: Duplex Usage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Serial Number'
+		dataType: string
+		lineageTag: 8a3b26ba-ded5-4db6-b4e5-78a176608904
+		summarizeBy: none
+		sourceColumn: Serial Number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Usage Data' = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data"),
+				    #"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Usage Data xlsx" = Source{[#"Folder Path"="D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\",Name="Usage Data.xlsx"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Usage Data xlsx"),
+				    Table1_Table = #"Imported Excel Workbook"{[Item="Table1",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Color Usage", Int64.Type}, {"Mono Usage", Int64.Type}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"Model Name", Text.Trim, type text}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Trimmed Text",{{"Copy Usage", Int64.Type}, {"Scan Usage", Int64.Type}, {"Simplex Usage", Int64.Type}, {"Duplex Usage", Int64.Type}, {"Year", Int64.Type}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Changed Type1",{{"Model Name", Text.Upper, type text}, {"Serial Number", Text.Upper, type text}})
+				in
+				    #"Uppercased Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

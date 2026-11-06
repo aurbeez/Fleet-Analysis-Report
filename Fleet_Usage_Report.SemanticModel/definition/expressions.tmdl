@@ -1,0 +1,40 @@
+expression 'Missing Devices' =
+		let
+		    Source = #"Usage Data",
+		    #"Removed Other Columns" = Table.SelectColumns(Source,{"Serial Number", "Model Name"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+		    #"Merged Queries" = Table.NestedJoin(#"Removed Duplicates", {"Serial Number"}, Fleet_Source, {"Serial Number"}, "Fleet", JoinKind.LeftAnti),
+		    #"Removed Columns" = Table.RemoveColumns(#"Merged Queries",{"Fleet"})
+		in
+		    #"Removed Columns"
+	lineageTag: e85219ca-a2e6-4da2-aba5-f7eaa5daa91b
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Fleet_Source =
+		let
+		    Source = Folder.Files("D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data"),
+		    #"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Fleet xlsx" = Source{[#"Folder Path"="D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\",Name="Fleet.xlsx"]}[Content],
+		    #"Imported Excel Workbook" = Excel.Workbook(#"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Fleet xlsx"),
+		    Table1_Table = #"Imported Excel Workbook"{[Item="Table1",Kind="Table"]}[Data],
+		    #"Renamed Columns" = Table.RenameColumns(Table1_Table,{{"Area", "Ministry Code"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Serial Number", type text}}),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type",{"Serial Number", "Ministry Code", "Age", "Address", "Device Status", "Model Name", "Collection Method", "City", "Postal Code"}),
+		    #"Capitalized Each Word" = Table.TransformColumns(#"Reordered Columns",{{"City", Text.Proper, type text}}),
+		    #"Uppercased Text" = Table.TransformColumns(#"Capitalized Each Word",{{"Postal Code", Text.Upper, type text}}),
+		    #"Capitalized Each Word1" = Table.TransformColumns(#"Uppercased Text",{{"Device Status", Text.Proper, type text}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Capitalized Each Word1","Port Mcneil","Port McNeill",Replacer.ReplaceText,{"City"}),
+		    #"Uppercased Text1" = Table.TransformColumns(#"Replaced Value",{{"Ministry Code", Text.Upper, type text}, {"Model Name", Text.Upper, type text}}),
+		    #"Capitalized Each Word2" = Table.TransformColumns(#"Uppercased Text1",{{"Address", Text.Proper, type text}}),
+		    #"Uppercased Text2" = Table.TransformColumns(#"Capitalized Each Word2",{{"Postal Code", Text.Upper, type text}, {"Serial Number", Text.Upper, type text}}),
+		    #"Trimmed Text" = Table.TransformColumns(#"Uppercased Text2",{{"Ministry Code", Text.Trim, type text}, {"Serial Number", Text.Trim, type text}, {"Address", Text.Trim, type text}, {"Device Status", Text.Trim, type text}, {"Model Name", Text.Trim, type text}, {"Collection Method", Text.Trim, type text}, {"City", Text.Trim, type text}, {"Postal Code", Text.Trim, type text}})
+		in
+		    #"Trimmed Text"
+	lineageTag: a7eb2e43-e359-47d8-b56d-fad2d640c836
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "9d40ebbc1a1ddec24474",
+  "position": {
+    "x": 160.56338028169014,
+    "y": 95.774647887323951,
+    "z": 5000,
+    "height": 128.169014084507,
+    "width": 325.35211267605644,
+    "tabOrder": 11250
+  },
+  "visualGroup": {
+    "displayName": "Total Print Vol Card",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,16 @@
+relationship AutoDetected_b074db80-7850-428b-b15d-8e9729334390
+	fromColumn: Fleet.City
+	toColumn: 'Geo Location'.City
+
+relationship AutoDetected_5c2f7d17-bc70-4d9f-9464-d3283c9de008
+	fromColumn: Fleet.'Ministry Code'
+	toColumn: 'Ministry Key'.'Ministry Code'
+
+relationship AutoDetected_0433b2fb-933a-4797-9c64-6bff3e1ebbc4
+	fromColumn: Fleet.'Model Name'
+	toColumn: 'Model Category Key'.'Model Name'
+
+relationship AutoDetected_47fd75a8-4fc3-4c2b-9939-d6f11f98fa42
+	fromColumn: 'Usage Data'.'Serial Number'
+	toColumn: Fleet.'Serial Number'
+

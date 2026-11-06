@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "ba7b86d1633a5b300cc3",
+  "position": {
+    "x": 160,
+    "y": 228.26666666666668,
+    "z": 2500,
+    "height": 230.4,
+    "width": 491.73333333333335,
+    "tabOrder": 11031
+  },
+  "visualGroup": {
+    "displayName": "Colour vs Mono by Year Visual",
+    "groupMode": "ScaleMode"
+  }
+}

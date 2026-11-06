@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "22fda23b70013908a20b",
+  "position": {
+    "x": 516,
+    "y": 97.333333333333329,
+    "z": 4000,
+    "height": 127.99999999999999,
+    "width": 325.33333333333326,
+    "tabOrder": 8000
+  },
+  "visualGroup": {
+    "displayName": "Operational Fleet Card",
+    "groupMode": "ScaleMode"
+  }
+}

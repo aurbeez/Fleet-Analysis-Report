@@ -1,0 +1,57 @@
+table 'Geo Location'
+	lineageTag: 52a8a171-6d42-4eb4-ae8c-9dbd21b1d96e
+
+	column City
+		dataType: string
+		lineageTag: 5622d67a-f6d5-4735-93e0-2c6c55184984
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 7547aa69-1980-4780-9fad-82acfbb7fce3
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude
+		dataType: double
+		lineageTag: 8afafd25-d33b-45e4-9f0b-dcf58cee3596
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Location Type'
+		dataType: string
+		lineageTag: 350ba74e-4295-4ddd-a530-09a899254c9e
+		summarizeBy: none
+		sourceColumn: Location Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Geo Location' = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data"),
+				    #"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Geo Location xlsx" = Source{[#"Folder Path"="D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\",Name="Geo Location.xlsx"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Geo Location xlsx"),
+				    Table1_Table = #"Imported Excel Workbook"{[Item="Table1",Kind="Table"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Table1_Table,{{"Area", "Location Type"}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Renamed Columns",{{"City", Text.Proper, type text}, {"Location Type", Text.Proper, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Capitalized Each Word",{{"City", Text.Trim, type text}, {"Location Type", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

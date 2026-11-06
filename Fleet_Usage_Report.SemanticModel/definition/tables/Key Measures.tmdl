@@ -1,0 +1,73 @@
+table 'Key Measures'
+	lineageTag: 99e42a2c-7fd1-4c6d-87c1-53f37fadcc0f
+
+	measure 'Total Colour Volume' = SUM('Usage Data'[Color Usage])
+		formatString: 0
+		lineageTag: 2ef7a584-224b-4153-af81-17f08649abde
+
+	measure 'Total Fleet Size' = DISTINCTCOUNT('Fleet'[Serial Number])
+		formatString: 0
+		lineageTag: efd5976d-6d57-4afa-9341-6023077e0c30
+
+	measure 'Total Mono Volume' = SUM('Usage Data'[Mono Usage])
+		formatString: 0
+		lineageTag: d1e4a07f-23ae-4066-8e47-3c2a28fdc386
+
+	measure 'Total Print Volume' = [Total Mono Volume] + [Total Colour Volume]
+		formatString: 0
+		lineageTag: 9012dda7-6554-4545-b5e7-386c73e8656e
+
+	measure 'Operational Fleet Size' =
+			
+			CALCULATE(
+			    [Total Fleet Size],
+			    'Fleet'[Device Status] = "Operational")
+		formatString: 0
+		lineageTag: fc10a8fd-6000-405a-834f-7191887886ad
+
+	measure '% Operational' = ```
+			
+			DIVIDE(
+			    [Operational Fleet Size], 
+			    [Total Fleet Size]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 14f05c9f-fbb2-4032-b890-40745fa42883
+
+	measure '% Colour' = ```
+			
+			DIVIDE(
+			    [Total Colour Volume], 
+			    [Total Print Volume]
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f2515e5a-b550-4270-9023-b304618add64
+
+	measure 'Average Device Age' = AVERAGE('Fleet'[Age])
+		formatString: 0.00
+		lineageTag: 15e2a2d1-1522-4fe8-bca5-e2462322fb92
+
+	measure 'Total Duplex Volume' = SUM('Usage Data'[Duplex Usage])
+		formatString: 0
+		lineageTag: 060baec5-9d0b-49fe-a876-0b13f0c828bd
+
+	measure 'Total Simplex Volume' = SUM('Usage Data'[Simplex Usage])
+		formatString: 0
+		lineageTag: 8e48cce1-20ad-456c-a041-8d4188062139
+
+	partition 'Key Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

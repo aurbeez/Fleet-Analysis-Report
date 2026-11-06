@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "60afbc6e92cd85074980",
+  "position": {
+    "x": 636.52061070033426,
+    "y": 224.30727736700149,
+    "z": 1000,
+    "height": 213.75999999999996,
+    "width": 609.28000000000009,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Total Print Vol by Year Visual",
+    "groupMode": "ScaleMode"
+  }
+}

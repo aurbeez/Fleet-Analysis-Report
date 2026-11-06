@@ -1,0 +1,179 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU12",
+      "reportVersionAtImport": {
+        "visual": "2.5.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "AccessibleDefault",
+      "reportVersionAtImport": {
+        "visual": "2.5.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU12",
+          "path": "BaseThemes/CY25SU12.json",
+          "type": "BaseTheme"
+        },
+        {
+          "name": "AccessibleDefault",
+          "path": "BuiltInThemes/AccessibleDefault.json",
+          "type": "CustomTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "insight_icon8868350890809001.svg",
+          "path": "insight_icon8868350890809001.svg",
+          "type": "Image"
+        },
+        {
+          "name": "overview_default8518639661932454.svg",
+          "path": "overview_default8518639661932454.svg",
+          "type": "Image"
+        },
+        {
+          "name": "overview_press8507273215469023.svg",
+          "path": "overview_press8507273215469023.svg",
+          "type": "Image"
+        },
+        {
+          "name": "overview_hover1094876001038757.svg",
+          "path": "overview_hover1094876001038757.svg",
+          "type": "Image"
+        },
+        {
+          "name": "device_default7740247830398335.svg",
+          "path": "device_default7740247830398335.svg",
+          "type": "Image"
+        },
+        {
+          "name": "device_press0646474596447888.svg",
+          "path": "device_press0646474596447888.svg",
+          "type": "Image"
+        },
+        {
+          "name": "device_hover27486947876911216.svg",
+          "path": "device_hover27486947876911216.svg",
+          "type": "Image"
+        },
+        {
+          "name": "map_default4088819396417983.svg",
+          "path": "map_default4088819396417983.svg",
+          "type": "Image"
+        },
+        {
+          "name": "map_hover4489066964768742.svg",
+          "path": "map_hover4489066964768742.svg",
+          "type": "Image"
+        },
+        {
+          "name": "map_press7959181063841106.svg",
+          "path": "map_press7959181063841106.svg",
+          "type": "Image"
+        },
+        {
+          "name": "overview_press8592079692044413.svg",
+          "path": "overview_press8592079692044413.svg",
+          "type": "Image"
+        },
+        {
+          "name": "device_press3744740909247546.svg",
+          "path": "device_press3744740909247546.svg",
+          "type": "Image"
+        },
+        {
+          "name": "map_press0813354835682174.svg",
+          "path": "map_press0813354835682174.svg",
+          "type": "Image"
+        },
+        {
+          "name": "overview_press7513179705777093.svg",
+          "path": "overview_press7513179705777093.svg",
+          "type": "Image"
+        },
+        {
+          "name": "device_press8881588067225146.svg",
+          "path": "device_press8881588067225146.svg",
+          "type": "Image"
+        },
+        {
+          "name": "map_press8031252475004231.svg",
+          "path": "map_press8031252475004231.svg",
+          "type": "Image"
+        },
+        {
+          "name": "nav_bar486883705025006.png",
+          "path": "nav_bar486883705025006.png",
+          "type": "Image"
+        },
+        {
+          "name": "nav_bar41897020803495477.png",
+          "path": "nav_bar41897020803495477.png",
+          "type": "Image"
+        },
+        {
+          "name": "nav_bar5659147268192419.png",
+          "path": "nav_bar5659147268192419.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "filterPaneHiddenInEditMode": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

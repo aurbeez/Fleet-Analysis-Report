@@ -1,0 +1,37 @@
+table 'Ministry Key'
+	lineageTag: 99bfbba9-a6c3-4acf-a13c-6355805d0d56
+
+	column 'Ministry Code'
+		dataType: string
+		lineageTag: 236a2d6d-4866-4111-bb6e-f315a770b6a1
+		summarizeBy: none
+		sourceColumn: Ministry Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ministry
+		dataType: string
+		lineageTag: 0459d476-b6f1-4b32-844b-0d7dda258e1d
+		summarizeBy: none
+		sourceColumn: Ministry
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Ministry Key' = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data"),
+				    #"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Minisrty Key xlsx" = Source{[#"Folder Path"="D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\",Name="Minisrty Key.xlsx"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Minisrty Key xlsx"),
+				    Table2_Table = #"Imported Excel Workbook"{[Item="Table2",Kind="Table"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Table2_Table,{{"Area", "Ministry Code"}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Renamed Columns",{{"Ministry Code", Text.Upper, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Uppercased Text",{{"Ministry", Text.Trim, type text}, {"Ministry Code", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

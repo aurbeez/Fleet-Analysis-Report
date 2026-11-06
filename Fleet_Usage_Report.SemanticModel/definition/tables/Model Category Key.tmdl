@@ -1,0 +1,36 @@
+table 'Model Category Key'
+	lineageTag: f87e24bf-cb20-4c76-8d51-122268281544
+
+	column 'Model Name'
+		dataType: string
+		lineageTag: 658d777b-9a0d-40dc-8265-50eb757dd777
+		summarizeBy: none
+		sourceColumn: Model Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Category'
+		dataType: string
+		lineageTag: 7bfac6bf-9055-48d6-9276-c8b94daeab2e
+		summarizeBy: none
+		sourceColumn: Device Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Model Category Key' = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data"),
+				    #"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Model Category Key xlsx" = Source{[#"Folder Path"="D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\",Name="Model Category Key.xlsx"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"D:\Auroni\Microsoft\PBI_Projects\Fleet_Analysis\Fleet_Data\_Model Category Key xlsx"),
+				    Table1_Table = #"Imported Excel Workbook"{[Item="Table1",Kind="Table"]}[Data],
+				    #"Uppercased Text" = Table.TransformColumns(Table1_Table,{{"Model Name", Text.Upper, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Uppercased Text",{{"Model Name", Text.Trim, type text}, {"Device Category", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

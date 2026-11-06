@@ -1,0 +1,108 @@
+table Fleet
+	lineageTag: 205e4373-8fcc-4d54-8b00-e09f025d23b7
+
+	column 'Serial Number'
+		dataType: string
+		lineageTag: fad222ea-e8b6-487e-8426-fe57ee424ac1
+		summarizeBy: none
+		sourceColumn: Serial Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ministry Code'
+		dataType: string
+		lineageTag: 6090fab2-ba22-4a5a-9101-bedcabfc5da3
+		summarizeBy: none
+		sourceColumn: Ministry Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: double
+		lineageTag: 756738fd-370a-4f53-a5ab-258a38654b46
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Address
+		dataType: string
+		lineageTag: 27fcc63b-f4c2-4ef6-9ce3-b0fe4bb6bf19
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Status'
+		dataType: string
+		lineageTag: 72fc93ba-8c04-4dba-9a3d-70d815556601
+		summarizeBy: none
+		sourceColumn: Device Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Model Name'
+		dataType: string
+		lineageTag: c9a8babf-632f-4b7a-b4d5-abed6cc87b2c
+		summarizeBy: none
+		sourceColumn: Model Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Collection Method'
+		dataType: string
+		lineageTag: 6ec65523-84a4-47d8-b54f-f27e89c1da71
+		summarizeBy: none
+		sourceColumn: Collection Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: b17642fa-d2f0-48a4-a7fc-a2f5f63282e9
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: string
+		lineageTag: fd08a8a2-c78e-4e62-afdc-9ea08e9e9203
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Ministry' = COALESCE(RELATED('Ministry Key'[Ministry]), "Unknown Ministry")
+		lineageTag: 894e339b-bd0f-43f8-810a-71f5ca988603
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Location Type' = COALESCE(RELATED('Geo Location'[Location Type]), "Unknown Location")
+		lineageTag: 0cfb09ef-ee91-42be-818f-19f440073a15
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display City' = COALESCE(RELATED('Geo Location'[City]), "Unknown City")
+		lineageTag: 656748ff-e228-4eb8-96f0-06abe181785d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fleet = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({Fleet_Source, #"Missing Devices"}),
+				    #"Replaced Value" = Table.ReplaceValue(Source,null,"Unknown",Replacer.ReplaceValue,{"Ministry Code", "Address", "Device Status", "Collection Method", "City", "Postal Code"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,101 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 192.74317421320308,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 627.2533508006336,
+            "y": 438.70023933751747
+          },
+          "nodeIndex": "Fleet",
+          "nodeLineageTag": "8a21ffed-dea1-46ae-9bd4-1e8f3ed3c167",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 652.11427248573773,
+            "y": 0
+          },
+          "nodeIndex": "Geo Location",
+          "nodeLineageTag": "52a8a171-6d42-4eb4-ae8c-9dbd21b1d96e",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 33.939560063360972,
+            "y": 2.5140414861748859
+          },
+          "nodeIndex": "Ministry Key",
+          "nodeLineageTag": "99bfbba9-a6c3-4acf-a13c-6355805d0d56",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 18.855311146311635,
+            "y": 614.68314336975925
+          },
+          "nodeIndex": "Model Category Key",
+          "nodeLineageTag": "f87e24bf-cb20-4c76-8d51-122268281544",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 336.60072942393674,
+            "y": 129.1726466143121
+          },
+          "nodeIndex": "Usage Data",
+          "nodeLineageTag": "6a415abc-1e64-4a0c-a723-13e2612a0e82",
+          "size": {
+            "height": 338.73870526497296,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 933.51350470057218,
+            "y": 546.86232618370673
+          },
+          "nodeIndex": "Key Measures",
+          "nodeLineageTag": "99e42a2c-7fd1-4c6d-87c1-53f37fadcc0f",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 104
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 79.553182037699813,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "b577dbabd646a24dd1a3",
+  "position": {
+    "x": 772.16921897331429,
+    "y": 407.30234293158844,
+    "z": 0,
+    "height": 288.8888888888888,
+    "width": 493.33333333333337,
+    "tabOrder": 8000
+  },
+  "visualGroup": {
+    "displayName": "Total Print Vol by Location Visual",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "859220f0c9c8407d35c5",
+  "position": {
+    "x": 160.56338028169014,
+    "y": 95.774647887323951,
+    "z": 5000,
+    "height": 128.169014084507,
+    "width": 325.35211267605644,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "Total Fleet Size Card",
+    "groupMode": "ScaleMode"
+  }
+}
