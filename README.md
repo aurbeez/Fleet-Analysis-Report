@@ -1,3 +1,5 @@
-# Sales Performance Dashboard
+# Fleet Analysis Dashboard
 
-![Dashboard Preview](images/Overview_Page.png)
+![Overview Page Preview](images/Overview_Page.png)
+![Device Details Page Preview](images/Device_Page.png)
+![Location Details Page Preview](images/Location_Page.png)
