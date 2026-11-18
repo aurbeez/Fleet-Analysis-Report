@@ -1,6 +1,6 @@
 # Fleet Analysis Dashboard
 ![Dashboard Overview Preview](images/Dashboard_Overview.gif)
-<p><i>If the gif doesn't play automatically, press the play button.</i></p>
+<p><i>(If the gif doesn't play automatically, press the play button)</i></p>
 
 ## Static Views
 *   **Overview Page:**
